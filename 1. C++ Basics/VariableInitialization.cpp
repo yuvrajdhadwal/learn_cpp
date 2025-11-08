@@ -1,6 +1,7 @@
 #include <iostream>
 
-int main() {
+int main()
+{
     // modern, recommended to do
     [[maybe_unused]] int x;     // default-initialization (no initializer) - garbage value
     // [[maybe_unused]] attribute tells the compiler a variable is unused and it is fine. 
@@ -9,6 +10,7 @@ int main() {
     // Best Practice: Prefer direct-list-initialization or value-initialization 
     // to initialize your variables. Initialize your variables upon creation.
 
+    // returns y but has the side effect of assigning y the value 5
     int y { 5 };                // direct-list-initialization (initial value in braces)
     // forbids narrowing conversions 4.5 causes error instead of turning into 4
     int e {};                   // value-initialization (empty braces) - defaults to 0
@@ -18,6 +20,7 @@ int main() {
     // also used when pass by value into functions
     [[maybe_unused]] int c ( 6 );    // direct-initialization (initial value in parenthesis)
 
+    // returns std::cout but has the side effect of adding y to the buffer
     std::cout << y;
     std::cout << e;
 
