@@ -16,6 +16,7 @@
                 "-Werror",
                 "-std=c++20",
                 "-pedantic-errors",
+                "-I./src/includes",
                 "${file}",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
