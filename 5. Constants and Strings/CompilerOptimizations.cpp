@@ -68,7 +68,7 @@ int main()
 
     // Dead Code Elimination
 
-    [[maybe_unused]] int a {1};  // will eliminate this code
+    [[maybe_unused]] int q {1};  // compiler will eliminate this code
     std::cout << 1 << '\n';
 
     // if attempting to debug and it is not behaving according to how you expect
