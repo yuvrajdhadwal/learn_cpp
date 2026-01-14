@@ -10,6 +10,11 @@ void print(int x, int y)  // this means that default arguments cannot come here
     std::cout << x << ' ' << y << '\n';
 }
 
+void printMany(int x, int y, int z)
+{
+    std::cout << x << ' ' << y << ' ' << z << '\n';
+}
+
 int main()
 {
     print(4);  // defualt arguments are placed at function call
