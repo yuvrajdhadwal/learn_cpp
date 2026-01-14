@@ -17,7 +17,7 @@ The headers for each grouping should be sorted alphabetically
 */
 
 #include <iostream>
-#include "add.h"  // inserts contents of add.h at this point
+#include "add.hpp"  // inserts contents of add.h at this point
 
 // Redundant Forward Declaration since Forward Declaration is also in add.h which is included
 int add(int x, int y);  // Forward Declaration allows compilation and linker will link
@@ -25,6 +25,16 @@ int add(int x, int y);  // Forward Declaration allows compilation and linker wil
 
 int main()
 {
+    /*
+    To Compile:
+        1. g++ -c x.cpp
+        2. g++ -c y.cpp
+        3. g++ -c z.cpp
+    To Link:
+        4. g++ x.o y.o z.o -o main
+    To Run:
+        5. main.exe
+    */
     std::cout << "The sum of 3 and 4 is " << add(3, 4) << '\n';
     return 0;
 }
