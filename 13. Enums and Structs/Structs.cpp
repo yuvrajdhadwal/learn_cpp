@@ -21,6 +21,11 @@ struct Company
     std::string companyName{};  // notice this is not std::string_viewer
 };
 
+struct CompanyPtr
+{
+    Company* company {};
+};
+
 void printEmployee(const Employee& employee)  // note pass by reference of struct
 {
     std::cout << "ID: " << employee.id << '\n';
@@ -63,6 +68,14 @@ int main()
     Company databricks {13000, {1}};  // nested initialization
 
     std::cout << databricks.CEO.wage << '\n';  // print member's member
+
+    Employee* yuvraj_ptr {&yuvraj};
+    std::cout << "Yuvraj Age: " << yuvraj_ptr->age << '\n';  // "->" member selection from pointer
+
+    CompanyPtr cmp_ptr {&databricks};
+    CompanyPtr* cmp_ptr_ptr {&cmp_ptr};
+
+    std::cout << cmp_ptr_ptr->company->CEO.wage << '\n';  // two memb select from ptr, 1 memb select
 
     std::cout << joe.age << '\n';
     printEmployee(yuvraj);
