@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 
+int g_count {0};
+
 struct Employee
 {
     int id;  // member variables of the struct, no initialization (bad)
@@ -10,6 +12,29 @@ struct Employee
     double wage {};  // empty curly braces ensure value initialization when Employee initialized
     // if you later choose to add more members to a struct, it's best practice to add them to end
     bool is_manager {false};
+
+    // implicitly inline so that struct can be included in any file without breaking one def rule
+    void work() const  // defines a member function called work
+    {
+        std::cout << "Employee: " << id << " working as usual boss o7\n";
+    }
+
+    // const member functions, allow for const structs to call them
+    // const only applys to members
+    // best practice to make functions constant if they don't alter state of the object
+    void work(const Employee& o) const
+    {
+        std::cout << "Employee: " << id << " working with Employee: " << o.id << " as usual boss\n";
+        ++g_count;  // const functions can alter global and function parameters
+    }
+
+    // const member function
+    void func() const
+    {}
+
+    // non-const overloaded member function
+    void func()
+    {}
 };
 
 // in most cases, structs and classes should be owners
@@ -54,7 +79,8 @@ int main()
 
     Employee pareen {4};  // uses default for age, value initializes wage to 0.0
 
-    constexpr Employee admin {-1};  // const and constexpr treated same as regular
+    // const structs have const data members, const structs can't call non const member functions
+    constexpr Employee admin {-1};  // const and constexpr treated same as regular objects
 
     Employee test { .id{9999}, .wage{-1}};  // designated initializer for structs, must be in 
     // order of declaration, skipped values will be value initialized
@@ -62,6 +88,9 @@ int main()
     // reassign with initializer list
     yuvraj = {yuvraj.id, 20, 54};
     amy = {.id = amy.id, .age = 22, .wage = 25};
+
+    amy.work();  // calling member function of Employee struct
+    amy.work(yuvraj);
 
     Employee yuvraj_2 {yuvraj};  // initializing struct with struct
 
