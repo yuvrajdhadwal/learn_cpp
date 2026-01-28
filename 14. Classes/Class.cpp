@@ -47,5 +47,15 @@ int main()
     Date date {};
     date.printDate();
 
+    std::string_view sv {"Hello"};
+
+    // prefer static cast when performing narrowing conversion
+    // make it really obvious that we are converting the type
+    // want to avoid list initialization (such as for vector)
+    static_cast<std::string>(sv);  // returns temp object std::string which is direct initialized
+    // prefer this when do not want to perform narrowing conversion
+    // need to provide additional arguments to constructor to cast
+    std::string {sv};  // explicitly creates std::string with list initialization
+
     return 0;
 }

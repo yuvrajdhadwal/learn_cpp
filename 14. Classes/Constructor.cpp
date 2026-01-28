@@ -35,6 +35,11 @@ class Foo
         std::cout << "Foo (" << m_x << ", " << m_y << ")\n";
     }
 
+    Foo getNewFoo()
+    {
+        return Foo {};  // creates new temporary object Foo{}, initializes another Foo{} and returns
+    }
+
     private:
     int m_x {};  // default value of 0,
     int m_y {2};  // default value of 2, 
