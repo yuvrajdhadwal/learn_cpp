@@ -43,6 +43,28 @@ int main()
     // O(n) if this is performance critical code, then best to just take the c-style string
     // which is really a c-style array of chars or a char* with a null terminator
 
+    // multi dimensional arrays
+    int a[3][5] {};
+    a[2][3] = 7;
+
+    int b[4][4][4] {};  // 3d array
+    // c arrays are row major this means rows first row then second row then third row etc
+
+    int c[2][3]  // 2 rows and 3 columns
+    {
+        {1, 2, 3},
+        {3, 4, 5}
+    };
+
+    for (const auto& row : c)
+    {
+        for (const auto& e : row)
+        {
+            std::cout << e << ' ';
+        }
+        std::cout << '\n';
+    }
+
 
     return 0;
 }

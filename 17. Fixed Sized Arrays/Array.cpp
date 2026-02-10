@@ -132,6 +132,15 @@ int main()
     auto ref {std::ref(x)};  // more concise syntax; deduces the kind of type instead of ctad
     auto cref {std::cref(x)};  // deduces to <const int>
 
+    // multidimensional std::array
+
+    std::array<std::array<int, 4>, 3> arr  // 3 rows 4 columns
+    {{  // note double braces here
+        {1, 2, 3, 4},
+        {2, 3, 4, 5},
+        {3, 4, 5, 6}
+    }};
+
 
     return 0;
 }
