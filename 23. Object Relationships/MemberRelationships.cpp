@@ -24,6 +24,18 @@
  *      4: member does not know of the existence of the object
  *
  * Typically references or pointers ; not responsible for creation or deletion
+ *
+ * Associations are:
+ *      1: member otherwise unrelated to object
+ *      2: member can belong to one or more objects
+ *      3: member does not have existence managed by object
+ *      4: member may or may not know of existence of object (can have bidirectional relationship)
+ *
+ * Typically implemented as references or pointers, but is not necessary
+ *
+ * Compositions: "part of" relationship
+ * Aggregations: "has a" relationship
+ * Associations: "uses a" relationship
  */
 
 class Point2D
@@ -126,3 +138,90 @@ auto main() -> int
 
     std::cout << jim << '\n';  // prints out Jim Bean
 }
+
+// Associations examples
+
+class Patient;  // forward declaration to declare patient class so that addPatient knows
+
+class Doctor
+{
+    private:
+    std::string m_name{};
+    std::vector<std::reference_wrapper<const Patient>> m_patients{};
+
+    public:
+    Doctor(std::string_view name)
+        : m_name {name}
+    {}
+
+    void addPatient(Patient& patient);  // forward declare since we need to define patient first
+    friend auto operator<< (std::ostream& out, const Doctor& doctor) -> std::ostream&;
+    [[nodiscard]] auto getName() const -> const std::string& { return m_name; }
+};
+
+class Patient
+{
+    private:
+    std::string m_name{};
+    std::vector<std::reference_wrapper<const Doctor>> m_doctor{};
+
+    // making private so that users cannot call this
+    void addDoctor(const Doctor& doctor) { m_doctor.emplace_back(doctor); }
+
+    public:
+    Patient(std::string_view name)
+        : m_name {name}
+    {}
+
+    friend auto operator<< (std::ostream& out, const Patient& patient) -> std::ostream&;
+    [[nodiscard]] auto getName() const -> const std::string& { return m_name; }
+
+    // we want addPatient to access private functions within Patient
+    friend void Doctor::addPatient(Patient& patient);
+};
+
+void Doctor::addPatient(Patient& patient)
+{
+    m_patients.emplace_back(patient);
+    patient.addDoctor(*this);
+}
+
+auto operator<< (std::ostream& out, const Doctor& doctor) -> std::ostream&
+{
+
+    out << doctor.m_name << " is seeing patient: ";
+    for (const auto& patient : doctor.m_patients)
+    {
+        out << patient.get().getName() << ' ';
+    }
+
+    return out;
+}
+
+auto operator<< (std::ostream& out, const Patient& patient) -> std::ostream&
+{
+    if (patient.m_doctor.empty()) { out << patient.getName() << " has no doctors"; return out; }
+
+    out << patient.m_name << " is seeing doctors: ";
+    for (const auto& doctor : patient.m_doctor)
+    {
+        out << doctor.get().getName() << ' ';
+    }
+
+    return out;
+}
+
+// Reflexive Associations
+
+class Course
+{
+    private:
+    std::string m_name{};
+    const Course* m_prereq{};
+
+    public:
+    Course(std::string_view name, const Course* prereq = nullptr)
+        : m_name { name }
+        , m_prereq { prereq }
+    {}
+};
