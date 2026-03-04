@@ -36,6 +36,13 @@
  * Compositions: "part of" relationship
  * Aggregations: "has a" relationship
  * Associations: "uses a" relationship
+ *
+ * Dependencies are:
+ *      one object invokes another object's functionality in order to accomplish their own task
+ *      any change to an object may break objects depending on it, always unidirectional
+ *
+ *      not members, objects that are instantiated when needed or are passed in as arguments
+ *      are dependencies
  */
 
 class Point2D
@@ -55,6 +62,7 @@ class Point2D
         , m_y {coord_y}
     {}
 
+    // dependency example
     friend auto operator<< (std::ostream& out, const Point2D& other) -> std::ostream&
     {
         out << '(' << other.m_x << ", " << other.m_y << ')';
@@ -80,6 +88,7 @@ class Creature
         , m_location {location}
     {}
 
+    // dependency
     friend auto operator<< (std::ostream& out, const Creature& other) -> std::ostream&
     {
         out << other.m_name << " is at " << other.m_location;
@@ -147,6 +156,7 @@ class Doctor
 {
     private:
     std::string m_name{};
+    // association
     std::vector<std::reference_wrapper<const Patient>> m_patients{};
 
     public:
@@ -163,6 +173,7 @@ class Patient
 {
     private:
     std::string m_name{};
+    // association
     std::vector<std::reference_wrapper<const Doctor>> m_doctor{};
 
     // making private so that users cannot call this
