@@ -1,6 +1,5 @@
 #pragma once
 
-namespace BasicMath
-{
-    constexpr double e {2.7};
+namespace BasicMath {
+constexpr double e{2.7};
 }

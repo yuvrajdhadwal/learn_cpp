@@ -1,34 +1,33 @@
-#include <iostream>
 #include <cstdint>
+#include <iostream>
 
-int main()
-{
+int main() {
     // unsigned numbers can underflow easily
     // any operation with unsigned numbers will result in an unsigned number
-    unsigned short us { 255 };
-    unsigned int ui { 65'535 };
-    unsigned long ul { 4'294'967'295 };
-    unsigned long long ull { 8'446'744'073'709'551'614 };
+    unsigned short us{255};
+    unsigned int ui{65'535};
+    unsigned long ul{4'294'967'295};
+    unsigned long long ull{8'446'744'073'709'551'614};
 
     std::cout << us << ui << ul << ull << '\n';
 
     // the following code only works since we disabled treat warnings as errors
-    unsigned short g{ 65535 }; // largest 16-bit unsigned value possible
+    unsigned short g{65535};  // largest 16-bit unsigned value possible
     std::cout << "x was: " << g << '\n';
 
-    g = 65536; // 65536 is out of our range, so we get modulo wrap-around
+    g = 65536;  // 65536 is out of our range, so we get modulo wrap-around
     std::cout << "x is now: " << g << '\n';
 
-    g = 65537; // 65537 is out of our range, so we get modulo wrap-around
+    g = 65537;  // 65537 is out of our range, so we get modulo wrap-around
     std::cout << "x is now: " << g << '\n';
 
-    unsigned short v{ 0 }; // smallest 2-byte unsigned value possible
+    unsigned short v{0};  // smallest 2-byte unsigned value possible
     std::cout << "x was: " << v << '\n';
 
-    v = -1; // -1 is out of our range, so we get modulo wrap-around
+    v = -1;  // -1 is out of our range, so we get modulo wrap-around
     std::cout << "x is now: " << v << '\n';
 
-    v = -2; // -2 is out of our range, so we get modulo wrap-around
+    v = -2;  // -2 is out of our range, so we get modulo wrap-around
     std::cout << "x is now: " << v << '\n';
 
     // least will give you the smallest int that fits requirements
@@ -37,15 +36,15 @@ int main()
 
     // sizeof returns type std::size_t
 
-    std::cout << "least 8:  " << sizeof(std::int_least8_t)  * 8 << " bits\n";
-	std::cout << "least 16: " << sizeof(std::int_least16_t) * 8 << " bits\n";
-	std::cout << "least 32: " << sizeof(std::int_least32_t) * 8 << " bits\n";
-	std::cout << '\n';
-	std::cout << "fast 8:  "  << sizeof(std::int_fast8_t)   * 8 << " bits\n";
-	std::cout << "fast 16: "  << sizeof(std::int_fast16_t)  * 8 << " bits\n";
-	std::cout << "fast 32: "  << sizeof(std::int_fast32_t)  * 8 << " bits\n";
+    std::cout << "least 8:  " << sizeof(std::int_least8_t) * 8 << " bits\n";
+    std::cout << "least 16: " << sizeof(std::int_least16_t) * 8 << " bits\n";
+    std::cout << "least 32: " << sizeof(std::int_least32_t) * 8 << " bits\n";
+    std::cout << '\n';
+    std::cout << "fast 8:  " << sizeof(std::int_fast8_t) * 8 << " bits\n";
+    std::cout << "fast 16: " << sizeof(std::int_fast16_t) * 8 << " bits\n";
+    std::cout << "fast 32: " << sizeof(std::int_fast32_t) * 8 << " bits\n";
 
-    std::int_fast16_t h{ 1 };
+    std::int_fast16_t h{1};
     std::cout << h << '\n';
 
     /*
@@ -56,12 +55,12 @@ int main()
     age, or counting from 1 to 10, it doesn’t matter whether int is 16-bits or 32-bits
     (the numbers will fit either way). This will cover the vast majority of the cases you’re
     likely to run across.
-    
+
     Prefer std::int#_t when storing a quantity that needs a guaranteed range.
     Prefer std::uint#_t when doing bit manipulation or well-defined wrap-around behavior
     is required (e.g. for cryptography or random number generation).
-    
-    
+
+
     Avoid the following when possible:
 
     short and long integers (prefer a fixed-width integer type instead).

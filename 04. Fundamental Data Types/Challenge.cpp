@@ -1,7 +1,6 @@
 #include <iostream>
 
-int main()
-{
+int main() {
     double x{};
     double y{};
     char op{};
@@ -13,22 +12,18 @@ int main()
     std::cout << "Enter +, -, *, or /: ";
     std::cin >> op;
 
-    if (op == '+')
-    {
+    if (op == '+') {
         std::cout << x << ' ' << op << ' ' << y << " is " << x + y << '\n';
-    } else if (op == '-')
-    {
+    } else if (op == '-') {
         std::cout << x << ' ' << op << ' ' << y << " is " << x - y << '\n';
-    } else if (op == '*')
-    {
+    } else if (op == '*') {
         std::cout << x << ' ' << op << ' ' << y << " is " << x * y << '\n';
-    } else if (op == '/')
-    {
+    } else if (op == '/') {
         if (y == 0.0) {
             return 0;
         }
         std::cout << x << ' ' << op << ' ' << y << " is " << x / y << '\n';
     }
-    
+
     return 0;
 }

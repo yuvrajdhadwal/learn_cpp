@@ -1,37 +1,25 @@
 #include <iostream>
 
-namespace
+namespace {
+int out()  // unnamed namespace keeps functions in global namespace but makes them static
 {
-    int out()  // unnamed namespace keeps functions in global namespace but makes them static
-    {
-        return 5;
-    }
-
-    int in()
-    {
-        return 4;
-    }
+    return 5;
 }
+
+int in() { return 4; }
+}  // namespace
 
 inline namespace V1  // can call this example using V1:: or just regularly as if it wasn't in
 // a namespace
 {
-    void example()
-    {
-        std::cout << "this is version one\n";
-    }
-}
+void example() { std::cout << "this is version one\n"; }
+}  // namespace V1
 
-namespace V2
-{
-    void example()
-    {
-        std::cout << "this is version 2\n";
-    }
-}
+namespace V2 {
+void example() { std::cout << "this is version 2\n"; }
+}  // namespace V2
 
-int main()
-{
+int main() {
     std::cout << "using the qualified name for cout " << std::max(3, 4) << '\n';
 
     using std::cout;

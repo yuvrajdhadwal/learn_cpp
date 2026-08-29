@@ -1,10 +1,10 @@
 // Use double quotes to include header files that you’ve written
-// or are expected to be found in the current directory. 
+// or are expected to be found in the current directory.
 // Use angled brackets to include headers that come with your compiler, OS,
 // or third-party libraries you’ve installed elsewhere on your system.
 
 /*
-To maximize the chance that missing includes will be flagged by compiler, 
+To maximize the chance that missing includes will be flagged by compiler,
 order your #includes as follows (skipping any that are not relevant):
 
 1. The paired header file for this code file (e.g. add.cpp should #include "add.h")
@@ -17,14 +17,14 @@ The headers for each grouping should be sorted alphabetically
 */
 
 #include <iostream>
+
 #include "add.hpp"  // inserts contents of add.h at this point
 
 // Redundant Forward Declaration since Forward Declaration is also in add.h which is included
 int add(int x, int y);  // Forward Declaration allows compilation and linker will link
 // declaration to the definition in the other file since no definition in this file
 
-int main()
-{
+int main() {
     /*
     To Compile:
         1. g++ -c x.cpp

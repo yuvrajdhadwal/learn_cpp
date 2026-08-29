@@ -1,5 +1,4 @@
-int main()
-{
+int main() {
     // inline functions allow for multiple definitions of the same function
     // they must be identical
 

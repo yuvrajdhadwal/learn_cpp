@@ -7,16 +7,11 @@
 static int g_x{};  // non const globals have external linkage, you can turn this to internal
 // linkage with the static keyword, zero initialized by default since it's static
 
-const int g_y {1};  // const globals have internal linkage by default
-constexpr int g_z {2};  // constexpr globals have internal linkage by default
+const int g_y{1};      // const globals have internal linkage by default
+constexpr int g_z{2};  // constexpr globals have internal linkage by default
+// you can put `extern const int g_y;` in a header file to make it have external linkage again
 
 // internal linkage for function, they have external linkage by default
-[[maybe_unused]] static int add(int x, int y)
-{
-    return x + y;
-}
+[[maybe_unused]] static int add(int x, int y) { return x + y; }
 
-int main()
-{
-    std::cout << g_x << ' ' << g_y << ' ' << g_z << '\n';
-}
+int main() { std::cout << g_x << ' ' << g_y << ' ' << g_z << '\n'; }

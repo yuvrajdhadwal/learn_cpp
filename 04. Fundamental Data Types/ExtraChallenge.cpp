@@ -1,12 +1,10 @@
 #include <iostream>
 
-double calc_height(double time, double start_height)
-{
+double calc_height(double time, double start_height) {
     return start_height - 9.8 * time * time / 2;
 }
 
-int main()
-{
+int main() {
     double height{};
     std::cout << "Enter the height of the tower in meters: ";
     std::cin >> height;

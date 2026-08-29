@@ -6,10 +6,9 @@
 #define ENABLE_DEBUG  // Use preprocessor directives to state whether program should be compiled
 // in debug or executable version
 
-int getUserInput()
-{
+int getUserInput() {
 #ifdef ENABLE_DEBUG  // Preprocessor conditional that allows debugging lines if in debug mode
-std::cerr << "getUserInput() called\n";  // Unbuffered Print (better for debugging)
+    std::cerr << "getUserInput() called\n";  // Unbuffered Print (better for debugging)
 #endif  // Debugging print statements should not be indented so that easier to see
     std::cout << "Enter a Number: ";
     int x{};
@@ -17,12 +16,11 @@ std::cerr << "getUserInput() called\n";  // Unbuffered Print (better for debuggi
     return x;
 }
 
-int main()
-{
+int main() {
 #ifdef ENABLE_DEBUG
-std::cerr << "main() called\n";
+    std::cerr << "main() called\n";
 #endif
-    int x{ getUserInput() };
+    int x{getUserInput()};
     std::cout << "You entered: " << x << '\n';
 
     return 0;
