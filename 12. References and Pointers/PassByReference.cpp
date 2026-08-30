@@ -18,9 +18,7 @@ void printAnyValue(const std::string& val)  // cannot change val if we want to
     std::cout << val << '\n';
 }
 
-
-int main()
-{
+int main() {
     // General Rule of Thumb:
     // Pass by Value if Fundamental Type (Cheap), Pass by Const Reference if Class Type (Expensive)
     // If Unsure, Pass by Const Reference
@@ -29,16 +27,16 @@ int main()
     // objects is faster and compiler can make optimizations
     // For expensive to copy objects, pass by reference is better since cost of copy dominates
     // References require RAM access twice, whereas Values require one access of RAM
-      // This is because first you need to access where value is stored then access value (indirect)
-    std::string s {"Test"};
+    // This is because first you need to access where value is stored then access value (indirect)
+    std::string s{"Test"};
 
     printNonConstValue(s);
 
-    const std::string const_s {"Woooo!"};
+    const std::string const_s{"Woooo!"};
 
-    printAnyValue(s);  // l-value
-    printAnyValue("Hello!");  // const l-value
-    printAnyValue(std::string {"Wow!"});  // r-value, temporary copy made and val binds to that
+    printAnyValue(s);                    // l-value
+    printAnyValue("Hello!");             // const l-value
+    printAnyValue(std::string{"Wow!"});  // r-value, temporary copy made and val binds to that
     // this makes this as expensive as pass by value :(
     printAnyValue(const_s);  // const l-value
 

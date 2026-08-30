@@ -1,7 +1,6 @@
 #pragma once
 
 template <typename T>
-T max(T x, T y)
-{
-    return (x < y) ? y : x;
+inline auto max(T x_x, T y_y) -> T {
+    return (x_x < y_y) ? y_y : x_x;
 }

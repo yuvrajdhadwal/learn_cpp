@@ -17,7 +17,7 @@ class Fraction
 
     // Copy Constructor
     // Should do nothing beyond copying since compiler may optimize copy constructor out
-    // Prefer default copy constructor over 
+    // Prefer default copy constructor over custom one
     // copy/move constructors should not be made explicit
     Fraction(const Fraction& o)  // use const lvalue reference for copy constructor
         : m_numerator {o.m_numerator}
