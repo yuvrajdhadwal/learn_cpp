@@ -2,20 +2,17 @@
 #include <string>
 #include <string_view>
 
-class Employee
-{
-    private:
-    std::string m_name {};
+class Employee {
+   private:
+    std::string m_name{};
 
-    public:
-    Employee(std::string_view name)
-        : m_name {name}
-    {}
+   public:
+    Employee(std::string_view name) : m_name{name} {}
 
-    const std::string& getName() const & {return m_name;}  // & qualifier overloads function to 
+    const std::string& getName() const& { return m_name; }  // & qualifier overloads function to
     // only handle lvalue implicit objects
 
-    std::string getName() const && {return m_name;}  // && qualifer overloads function to only
+    std::string getName() const&& { return m_name; }  // && qualifer overloads function to only
     // handle rvalue implicit objects
 
     // non ref qualified overloads cannot be done if refqualified overloads exist for a function
@@ -24,15 +21,13 @@ class Employee
 };
 
 // returns by value (rvalue)
-Employee createEmployee(std::string_view name)
-{
-    Employee e {name};
+Employee createEmployee(std::string_view name) {
+    Employee e{name};
     return e;
 }
 
-int main()
-{
-    Employee joe {"joe"};
+int main() {
+    Employee joe{"joe"};
     // getName returns reference
     std::cout << joe.getName() << '\n';  // joe is lvalue ref, so this calls getName() &
 
