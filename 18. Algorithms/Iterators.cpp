@@ -39,7 +39,7 @@ int main()
 
     // another example
     std::vector v2 {1, 2, 3, 4, 5, 6, 7};
-    auto it {v.begin()};
+    auto it {v2.begin()};
 
     ++it;  // moves to second element
     std::cout << *it << '\n';
@@ -47,7 +47,7 @@ int main()
     // this invalidates it, and subsequent values
     it = v2.erase(it);  // erases current element and returns iterator of next element (or end)
 
-    ++it;  // undefined behavior
+    ++it;  // no longer undefined behavior since we re-assigned iterator after erasing
     std::cout << *it << '\n';
 
     return 0;
