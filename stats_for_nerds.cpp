@@ -26,6 +26,8 @@
 * 	- CXL Memory Load Latency: ~100 - 400 ns
 *
 * 	- 32 bit is -2.15 billion to 2.15 billion
+* 	- 32 bits is -2^31 -> 2^31 or 2.15 * -10^9 -> 2.15 * 10^9
+* 	- 64 bits is -2^63 -> 2^63 or 9.22 * -10^18 -> 9.22 * 10^18
 *
 * General things to Remember:
 * 	- Cache Miss -> 100 ns -> 300 cycles -> 300-900 instructions stalled
