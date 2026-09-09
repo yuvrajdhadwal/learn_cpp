@@ -1,5 +1,3 @@
-#include <iostream>
-
 /**
  * Best Practices:
  *      - Overloaded Operators should operate on at least one program defined type

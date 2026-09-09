@@ -14,7 +14,6 @@
 int x{5};       // regular variable
 int& lref{x};   // L-Value reference
 int&& rref{5};  // R-value reference
-                //
 
 #include <iostream>
 
@@ -47,7 +46,7 @@ auto main() -> int {
     auto&& rref{Fraction{3, 5}};  // rvalue reference to temporary fraction
                                   // since, we are making rval ref, temp object not destoryed
     std::cout << rref << '\n';    // operator<< binds to temp ref, no copies made
-                                  //
+
     int&& intrref{5};             // because we are init rref, temp with val 5 is created here
     intrref = 10;
     std::cout << intrref << '\n';
@@ -55,7 +54,7 @@ auto main() -> int {
     int x{5};
     myFunc(x);  // lval
     myFunc(5);  // rval
-    int&& ref {5};
+    int&& ref{5};
     fun(ref);  // chooses lval, lval of type int&&
                // dont return rval refs since theyll lead to hanging refs most likely
     return 0;
