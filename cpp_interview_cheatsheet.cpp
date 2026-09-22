@@ -5,6 +5,7 @@
  *	3. std::distance is O(1) for random-access iterators, O(n) for forward/bidirectional
  *	4. To create a custom hash, make struct, in it define std::size_t operator() (x) const
  *	5. Comparators must use <, >. Min-Heap/Descending created with std::greater or '>'
+ *	5a. Max-Heap/Ascending created with std::less or '<' and is the default
  *	6. Branchless wins when >6% misprediction rate, check godbolt, measure, don't use gut feeling
  *	7. Always double check math of working set size and compare to caches, don't use gut feeling
  *	8. Scaling does not create tail latency; that is created by rehashing, page faults, GC, locking etc
