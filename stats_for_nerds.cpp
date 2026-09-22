@@ -16,6 +16,10 @@
 * 	- Page Size: 4 KB, Huge Pages are 2 MB / 1 GB
 * 	- L2 TLB - 2000 entries -> ~8 MB Process Working Set Size
 *
+* 	- Linux Default Stack Size - 8 MB
+* 	- Call Stack Frames - ~16 - 48 bytes
+* 	- Stack Overflow occurs at roughly ~200k+ frames
+*
 * 	- L1 Cache Hit Load Latency: 2 cycles (TLB V2P Translation & Cache Lookup -> Tag Compare)
 * 	- L2 Cache Hit Load Latency: ~4 ns
 * 	- L3 Cache Hit Load Latency: ~15 ns
