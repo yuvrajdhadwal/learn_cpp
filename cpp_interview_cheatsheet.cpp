@@ -9,6 +9,7 @@
  *	6. Branchless wins when >6% misprediction rate, check godbolt, measure, don't use gut feeling
  *	7. Always double check math of working set size and compare to caches, don't use gut feeling
  *	8. Scaling does not create tail latency; that is created by rehashing, page faults, GC, locking etc
+ *	9. If return X; and X is local variable, then NVRO: built in place or moved worst case, else copied
  *
  * Overflow:
  * 	INT_MAX = 2^31 - 1 ~~~~ 2.147 * 10^9 (2.147 billion)
