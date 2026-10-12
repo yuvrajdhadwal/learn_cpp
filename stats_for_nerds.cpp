@@ -22,10 +22,10 @@
 *
 * 	- L1 Cache Hit Load Latency: 2 cycles (TLB V2P Translation & Cache Lookup -> Tag Compare)
 * 	- L2 Cache Hit Load Latency: ~4 ns
-* 	- L3 Cache Hit Load Latency: ~15 ns
+* 	- L3 Cache Hit Load Latency: ~13 ns
 * 	- DRAM Hit Load Latency: ~100 ns
 * 	- Disk Hit Load Latnecy: ~8 ms
-* 	- Core-to-Core Cache Transfer: ~30-80 ns
+* 	- Core-to-Core Cache Transfer: ~30 ns
 * 	- NUMA Core-to-Core Transfer: ~100-200 ns
 * 	- CXL Memory Load Latency: ~100 - 400 ns
 *
